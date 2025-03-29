@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Work Sans", sans-serif;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
