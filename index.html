@@ -13,8 +13,8 @@
   </head>
   <body>
     <header class="bg-gray-400">
-      <div class="container flex justify-between items-center">
-        <div class="logo flex w-1/1 justify-between items-center">
+      <div class="container flex justify-between items-center flex-wrap">
+        <div class="logo flex w-1/1 justify-between items-center lg:w-auto">
           <a href="#">
             <img src="img/logo.png" alt="logo" class="w-[130px] max-w-none" />
           </a>
@@ -23,8 +23,10 @@
           </div>
         </div>
 
-        <div class="nav">
-          <ul class="parent [&>li]:p-[15px] hidden lg:flex">
+        <div
+          class="nav overflow-hidden h-0 w-[100%] transition-all duration-300 lg:overflow-visible lg:h-auto lg:w-auto"
+        >
+          <ul class="parent [&>li]:p-[15px] lg:flex">
             <li><a href="#home">home</a></li>
             <li><a href="#about">about</a></li>
             <li><a href="#services">services</a></li>
@@ -35,5 +37,25 @@
         </div>
       </div>
     </header>
+
+    <script>
+      //header variable
+
+      let header = document.querySelector("header .nav");
+      let mobile = document.querySelector("header .mobile");
+
+      let par = document.querySelector("header .nav .parent");
+
+      // section about header
+      mobile.addEventListener("click", function () {
+        let height = par.getBoundingClientRect().height;
+        header.style.height = height + "px";
+        header.classList.toggle("active");
+
+        if (!header.classList.contains("active")) {
+          header.style.height = 0;
+        }
+      });
+    </script>
   </body>
 </html>
