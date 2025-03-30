@@ -24,7 +24,7 @@
         </div>
 
         <div
-          class="nav overflow-hidden h-0 w-[100%] transition-all duration-300 lg:overflow-visible lg:h-auto lg:w-auto"
+          class="nav overflow-hidden max-h-0 w-[100%] transition-[max-height] duration-400 lg:overflow-visible lg:w-auto lg:max-h-none"
         >
           <ul class="parent [&>li]:p-[15px] lg:flex">
             <li><a href="#home">home</a></li>
@@ -41,21 +41,26 @@
     <script>
       //header variable
 
-      let header = document.querySelector("header .nav");
+      let nav = document.querySelector("header .nav");
       let mobile = document.querySelector("header .mobile");
 
-      let par = document.querySelector("header .nav .parent");
-
-      // section about header
-      mobile.addEventListener("click", function () {
-        let height = par.getBoundingClientRect().height;
-        header.style.height = height + "px";
-        header.classList.toggle("active");
-
-        if (!header.classList.contains("active")) {
-          header.style.height = 0;
+      mobile.addEventListener("click", () => {
+        if (nav.classList.contains("max-h-0")) {
+          nav.classList.remove("max-h-0");
+          nav.classList.add("max-h-[360px]"); // يمكن تعديل القيم حسب طول القائمة
+        } else {
+          nav.classList.remove("max-h-[360px]");
+          nav.classList.add("max-h-0");
         }
       });
+
+      // window.addEventListener("resize", () => {
+      //   if (window.innerWidth >= 1024) {
+      //     header.classList.remove("h-0");
+      //   } else if (!header.classList.contains("h-auto")) {
+      //     header.classList.add("h-0");
+      //   }
+      // });
     </script>
   </body>
 </html>
